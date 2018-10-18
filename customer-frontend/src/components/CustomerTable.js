@@ -10,13 +10,6 @@ export default class CustomerTable extends Component {
   }
 
   componentDidMount() {
-    // fetch("http://localhost:8080/api/customers", { mode: "cors" })
-    //   .then(res => res.json())
-    //   .then(resData => {
-    //     this.setState({ customerData: resData });
-    //   })
-    //   .then(() => console.log(this.state.customerData))
-    //   .catch(err => console.error(err));
     this.getCustomersFromBackend()
   }
 
@@ -30,16 +23,42 @@ export default class CustomerTable extends Component {
     }
   }
 
-  loadCustomers = () => {
-    fetch("http://localhost:8080/api/customers")
-      .then(res => res.json())
-      .then(resData => {
-        this.setState({ customerData: resData.content });
-      })
-      .catch(err => console.error(err));
-  };
-
   render() {
-    return <div className="container" />;
+    const data = this.state.customerData;
+    const columns = [
+      {
+        Header: "First Name",
+        accessor: "firstName",
+        filterable: true
+      },
+      {
+        Header: "Last Name",
+        accessor: "lastName",
+        filterable: true
+      },
+      {
+        Header: "Date of Birth",
+        accessor: "dateOfBirth",
+        filterable: true
+      },
+      {
+        Header: "Username",
+        accessor: "username",
+        filterable: true
+      },
+      {
+        Header: "Password",
+        accessor: "password",
+        filterable: true
+      },
+    ];
+    return <div className="container">
+      <ReactTable
+        data={data}
+        columns={columns}
+        minRows={1}
+        className="-striped -highlight"
+      />
+    </div>;
   }
 }
