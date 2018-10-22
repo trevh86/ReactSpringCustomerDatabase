@@ -12,7 +12,6 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long ID;
 
-    // TODO: 15/10/2018 Make some of these unique.
     @Column(name = "firstName", nullable = false)
     private String firstName;
 
@@ -38,6 +37,14 @@ public class Customer {
         this.dateOfBirth = dateOfBirth;
         this.username = username;
         this.password = password;
+    }
+
+    public long getID() {
+        return ID;
+    }
+
+    public void setID(long ID) {
+        this.ID = ID;
     }
 
     public String getFirstName() {
