@@ -1,8 +1,15 @@
 package fi.customertask.customerdatabase.domain;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-public interface CustomerRepository extends CrudRepository <Customer, Long> {
-    // TODO: 15/10/2018 Add other queries such as delete etc.
-    // Removed old query findAll to test implicit definition. It is!
+import java.util.List;
+
+@RepositoryRestResource
+public interface CustomerRepository extends CrudRepository<Customer, Long> {
+
+    //    Only added for demonstration purposes
+    List<Customer> findByFirstName(@Param("firstName") String firstName);
+
 }

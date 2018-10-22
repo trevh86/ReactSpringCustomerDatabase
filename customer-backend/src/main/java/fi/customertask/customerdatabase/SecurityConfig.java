@@ -1,6 +1,5 @@
 package fi.customertask.customerdatabase;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,6 +15,7 @@ import java.util.Arrays;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    //    Configuring HttpSecurity to allow CORS.
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().authorizeRequests().anyRequest().permitAll();
@@ -24,6 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable();
     }
 
+    //    Creating new CorsConfiguration object to allow all origins, methods and headers
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
