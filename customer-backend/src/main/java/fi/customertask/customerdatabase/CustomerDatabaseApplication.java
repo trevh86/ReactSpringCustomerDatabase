@@ -2,18 +2,28 @@ package fi.customertask.customerdatabase;
 
 import fi.customertask.customerdatabase.domain.Customer;
 import fi.customertask.customerdatabase.domain.CustomerRepository;
+import javafx.application.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class CustomerDatabaseApplication {
+public class CustomerDatabaseApplication  extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure
+            (SpringApplicationBuilder application) {
+        return application.sources(CustomerDatabaseApplication.class);
+    }
+
     @Autowired
     private CustomerRepository customerRepository;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         SpringApplication.run(CustomerDatabaseApplication.class, args);
     }
 
