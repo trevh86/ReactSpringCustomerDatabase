@@ -1,1 +1,1 @@
-export const ApiAddress = "http://localhost:8080/api/customers";
+export const ApiAddress = "http://localhost:8080/customer-database/api/customers";
