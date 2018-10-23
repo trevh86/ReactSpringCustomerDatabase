@@ -45,7 +45,7 @@ export default class EditCustomer extends Component {
       <div>
         <Button
           size='small'
-          variant='flat'
+          variant='text'
           color='primary'
           onClick={() => this.simpleDialog.show()}
         >

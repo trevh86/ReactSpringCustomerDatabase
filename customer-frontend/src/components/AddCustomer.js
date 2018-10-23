@@ -99,7 +99,7 @@ export default class AddCustomer extends Component {
         <div>
           <Button
             style={{ margin: "10px" }}
-            variant='raised' color='primary'
+            variant='contained' color='primary'
             onClick={() => this.simpleDialog.show()}
           >
             New Customer

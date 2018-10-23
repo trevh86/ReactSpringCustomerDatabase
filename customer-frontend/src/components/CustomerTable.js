@@ -24,10 +24,9 @@ export default class CustomerTable extends Component {
   async getCustomersFromBackend() {
     try {
       const response = await axios.get(ApiAddress);
-      console.log(response.data._embedded.customers);
       this.setState({ customerData: response.data._embedded.customers });
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }
 
@@ -85,7 +84,7 @@ export default class CustomerTable extends Component {
         Cell: ({ value }) => (
           <Button
             size='small'
-            variant='flat'
+            variant='text'
             color='secondary'
             onClick={() => {
               this.confirmDelete(value);
@@ -166,7 +165,6 @@ export default class CustomerTable extends Component {
   };
 
   updateCustomer = (link, activity) => {
-    console.log(link);
     fetch(link, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
